@@ -26,11 +26,9 @@ export class EmailServiceProvider {
         continue;
       } else {
         try {
-          const ret = await service.send(email);
-          if (ret === true) {
-            sent = true;
-            break;
-          }
+          await service.send(email);
+          sent = true;
+          break;
         } catch (err) {
           console.error(err.code + ': ' + err.message);
           if (err.code === ErrorCode.BAD_REQUEST) {

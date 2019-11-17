@@ -1,6 +1,7 @@
 import * as https from "https";
 import { Email } from '../models/Email';
 import { EmailServiceError } from '../models/EmailServiceError';
+import { ErrorCode } from '../models/ErrorCode';
 
 export abstract class BaseEmailService {
   public abstract send(email: Email): Promise<boolean>;
@@ -15,7 +16,7 @@ export abstract class BaseEmailService {
         }
       });
       req.on('error', (e) => {
-        reject(e);
+        reject(new EmailServiceError(ErrorCode.SERVER_ERROR, e.message));
       });
       req.end(body);
     }));
