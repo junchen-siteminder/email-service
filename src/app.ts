@@ -6,9 +6,9 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as config from './config/config.json';
 import { Email } from './models/Email';
+import { EmailServiceError } from './models/EmailServiceError';
 import { ErrorCode } from './models/ErrorCode';
 import { EmailServiceProvider } from './services/EmailServiceProvider';
-import { EmailServiceError } from './models/EmailServiceError';
 
 export let app = express();
 app.use(bodyParser.json()); // for parsing application/json
