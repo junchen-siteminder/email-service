@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 import * as config from './config/config.json';
 import { Email } from './models/Email';
 import { EmailServiceError } from './models/EmailServiceError';
-import { ErrorCode } from './models/ErrorCode';
+import { ReturnCode } from './models/ReturnCode';
 import { EmailServiceProvider } from './services/EmailServiceProvider';
 
 export let app = express();
@@ -28,12 +28,12 @@ app.post('/send', (req, res) => {
   if(Object.keys(ret).length === 0) {
     const emailServiceProvider: EmailServiceProvider = new EmailServiceProvider(config.services);
     emailServiceProvider.send(email).then(() => {
-      res.status(ErrorCode.SUCCESS).send({message: 'Email is successfully accepted.'});
+      res.status(ReturnCode.SUCCESS).send({message: 'Email is successfully accepted.'});
     }).catch((err: EmailServiceError) => {
       res.status(err.code).send(err);
     });
   } else {
-    res.status(ErrorCode.BAD_REQUEST).send(ret);
+    res.status(ReturnCode.BAD_REQUEST).send(ret);
   }
 });
 
