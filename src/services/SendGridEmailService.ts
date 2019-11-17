@@ -2,17 +2,10 @@ import { Email } from '../models/Email';
 import { BaseEmailService } from './BaseEmailService';
 
 export class SendGridEmailService extends BaseEmailService {
-  private host = null;
-  private version = null;
-  private path = null;
-  private apiKey = null;
 
   constructor(config: any) {
-    super();
-    this.host = config.host;
-    this.version = config.version;
-    this.path = config.path;
-    this.apiKey = config.apiKey;
+    super(config);
+
   }
 
   public send(email: Email) {

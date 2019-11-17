@@ -1,6 +1,6 @@
 import { Email } from '../models/Email';
 import { EmailServiceError } from '../models/EmailServiceError';
-import { ErrorCode } from '../models/ErrorCode';
+import { ReturnCode } from '../models/ReturnCode';
 import { BaseEmailService } from './BaseEmailService';
 import { EmailServiceFactory } from './EmailServiceFactory';
 
@@ -31,7 +31,7 @@ export class EmailServiceProvider {
           break;
         } catch (err) {
           console.error(err.code + ': ' + err.message);
-          if (err.code === ErrorCode.BAD_REQUEST) {
+          if (err.code === ReturnCode.BAD_REQUEST) {
             throw err;
           } else {
             console.info("Switching to alternate email service provider");
@@ -42,7 +42,7 @@ export class EmailServiceProvider {
     if(sent) {
       return sent;
     } else {
-      throw new EmailServiceError(ErrorCode.SERVER_ERROR, 'Email service api is unavailable.');
+      throw new EmailServiceError(ReturnCode.SERVER_ERROR, 'Email service api is unavailable.');
     }
   }
 }

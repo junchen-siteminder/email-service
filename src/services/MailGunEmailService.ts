@@ -4,17 +4,11 @@ import { BaseEmailService } from './BaseEmailService';
 import { EmailServiceError } from '../models/EmailServiceError';
 
 export class MailGunEmailService extends BaseEmailService {
-  private host = null;
-  private version = null;
-  private apiKey = null;
-  private domain = null;
+  private readonly domain = null;
 
   constructor(config: any) {
-    super();
-    this.apiKey = config.apiKey;
+    super(config);
     this.domain = config.domain;
-    this.host = config.host;
-    this.version = config.version;
   }
 
   public send(email: Email): Promise<boolean> {
@@ -28,7 +22,7 @@ export class MailGunEmailService extends BaseEmailService {
     const options = {
       hostname: this.host,
       port: 443,
-      path: '/' + this.version + '/' + this.domain + '/messages',
+      path: '/' + this.version + '/' + this.domain + '/' + this.path,
       method: 'POST',
       auth: 'api:' + this.apiKey,
       headers: {
