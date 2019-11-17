@@ -38,5 +38,6 @@ The environment I used is listed below:
     5. The email will be sent via sendgrid only when api call to mailgun fails. In real life, we can use master-slave policy. Once mailgun becomes unavailable, sendgrid can become master service.
     6. Error handling can be better.
     7. Can write unit test code for each class and each function if required.
+    8. sendgrid can only accept 1000 recipients. Have to split recipients to multiple emails and send together.
     
 
