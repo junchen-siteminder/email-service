@@ -1,0 +1,17 @@
+{
+  "services" : {
+    "mailgun" : {
+      "apiKey": "xxx",
+      "domain": "xxx",
+      "host" : "api.mailgun.net",
+      "version": "v3",
+      "path": "messages"
+    },
+    "sendgrid" : {
+      "host" : "api.sendgrid.com",
+      "version" : "v3",
+      "path": "mail/send",
+      "apiKey": "xxx"
+    }
+  }
+}

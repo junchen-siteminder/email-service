@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "rootDir": "src",
+    "resolveJsonModule": true
+  },
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+  "filesGlob": [
+    "typings/index.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "node_modules/typescript/lib/lib.es6.d.ts"
+  ],
+  "include": [
+    "src/**/*",
+    "src/tests", "../config-service/services"
+  ],
+  "exclude": [
+    "node_modules", "src/__tests__"
+  ]
+}
